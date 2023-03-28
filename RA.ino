@@ -11,6 +11,7 @@ int NA = -1;
 int antRojo = 0;
 int antVerde = 0;
 int antAzul = 0;
+String estado = "m";
 
 void principal(){
 	rojol = analogRead(rojo)/4;
@@ -23,6 +24,13 @@ void principal(){
 	secB = opcion.substring(separador+1);
 	svmMove = secB.toInt();
 	switch (op){
+		case 1:
+			if(secB == "m"){
+				estado = "m";
+			}
+			else{
+				estado = "a";
+			}
 		case 2:
 			Serial.println(estadoServo);
 			break;
@@ -73,6 +81,7 @@ void color(int rojo, int verde, int azul, String col){
 }
 
 void lectura(){
+	if (estado == "a"){
 	rojol = analogRead(rojo)/4;
 	verdel = analogRead(verde)/4;
 	azull = analogRead(azul)/4;
@@ -81,5 +90,6 @@ void lectura(){
 		antRojo = rojol;
 		antVerde = verdel;
 		antAzul = azull;
+	}
 	}
 }

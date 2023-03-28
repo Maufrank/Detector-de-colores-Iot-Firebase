@@ -25,6 +25,16 @@ class arduino():
         linea = (self.conexion).readline()
         return linea.decode('utf-8').strip()
     
+    def cambiar_modo(self, modo):
+        # print('hola')
+        (self.conexion).write("1:{}".format(modo).encode('ascii'))
+        # print("\nEl servomotor se movio al color {}\n".format(color))
+        time.sleep(2)
+        
+    def cerrar(self):
+        self.conexion.close()
+        print("Se cerro la conexion con arduino")
+    
         
         
 
